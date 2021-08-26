@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Switch
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cryptoproject.databinding.ActivityDetailedBinding
@@ -49,12 +50,14 @@ class DetailedActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val user = intent.extras!!.getSerializable("ist") as MyDataItem
         equalCurrency = user.currency.toString()
+        cryptoText = user.price!!.toDouble()
+        binding.desc.text = "Çevirmek istediğiniz para miktarını giriniz"
         binding.exchange.setOnClickListener {
             dollarText = binding.textView5.text.toString().toDouble()
-            cryptoText = user.price!!.toDouble()
-            result = dollarText / cryptoText
+            result = divide(dollarText,cryptoText)
             binding.textView6.text = result.toString() + " " + equalCurrency + " " + "alabilirsiniz."
         }
+        switch()
         getMyGraphData()
         binding.currencyText.text = equalCurrency
         binding.textView1.text = "Current Price" + " " + user.price
@@ -149,7 +152,30 @@ class DetailedActivity : AppCompatActivity() {
             else -> true
         }
     }
-    fun exchange(value : Double){
+    fun switch(){
+        binding.switchConvert.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                binding.desc.text = "Çevirmek istediğiniz"+ " " + equalCurrency + " " + "miktarını giriniz"
+                binding.exchange.setOnClickListener {
+                    dollarText = binding.textView5.text.toString().toDouble()
+                    result = dollarText * cryptoText
+                    binding.textView6.text = result.toString() + "ödemeniz gerekli"
+                }
 
+
+            } else {
+                binding.desc.text = "Çevirmek istediğiniz para miktarını giriniz"
+                binding.exchange.setOnClickListener {
+                    dollarText = binding.textView5.text.toString().toDouble()
+                    result = divide(dollarText,cryptoText)
+                    binding.textView6.text = result.toString() + " " + equalCurrency + " " + "alabilirsiniz."
+                }
+
+            }
+        }
+        }
+    fun divide(number1 : Double,number2 : Double): Double {
+        return number1 / number2
     }
-}
+    }
+

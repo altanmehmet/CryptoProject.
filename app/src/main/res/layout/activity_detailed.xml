@@ -128,8 +128,7 @@
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="12sp"
-                    android:textStyle="bold|italic"
-                    android:text="Çevirmek istediğiniz dolar miktarını giriniz: "></TextView>
+                    android:textStyle="bold|italic"></TextView>
                 <EditText
                     android:id="@+id/textView5"
                     android:layout_width="411dp"
@@ -156,9 +155,19 @@
 
                 <Button
                     android:id="@+id/exchange"
-                    android:layout_width="match_parent"
+                    android:layout_width="235dp"
                     android:layout_height="50dp"
+
+                    android:background="@drawable/backgroundtext"
                     android:text="Convert" />
+
+                <Switch
+                    android:id="@+id/switchConvert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="çevir"
+                    android:textColor="#F3EEEE" />
             </LinearLayout>
 
             <LinearLayout
