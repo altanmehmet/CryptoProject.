@@ -38,6 +38,9 @@ class DetailedActivity : AppCompatActivity() {
     lateinit var lineDataSet: LineDataSet
     lateinit var linelist: ArrayList<Entry>
     lateinit var lineData: LineData
+    private var dollarText : Double = 0.0
+    private var cryptoText : Double = 0.0
+    private var result : Double = 0.0
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +49,19 @@ class DetailedActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val user = intent.extras!!.getSerializable("ist") as MyDataItem
         equalCurrency = user.currency.toString()
+        binding.exchange.setOnClickListener {
+            dollarText = binding.textView5.text.toString().toDouble()
+            cryptoText = user.price!!.toDouble()
+            result = dollarText / cryptoText
+            binding.textView6.text = result.toString() + " " + equalCurrency + " " + "alabilirsiniz."
+        }
         getMyGraphData()
-        binding.textId.text = user.currency
+        binding.currencyText.text = equalCurrency
+        binding.textView1.text = "Current Price" + " " + user.price
+        binding.textView2.text = "Dominance" + " " + user.market_cap_dominance
+        binding.textView3.text = "Currency Rank" + " " + user.rank
+        binding.textView4.text = "Market Cap" + " " + user.market_cap
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -60,8 +74,6 @@ class DetailedActivity : AppCompatActivity() {
         var dateTime = LocalDateTime.now()
         var newwDate = dateTime.minusDays(30)
         var newDate = newwDate.atOffset(ZoneOffset.UTC)
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'00:00:00Z")
-        val formatted = newDate.format(formatter)
         val retrofitData = retrofitBuilder.getDataGraph(equalCurrency,newDate.toString())
 
         retrofitData.enqueue(object : Callback<List<MyDataGraphItemItem>?> {
@@ -106,12 +118,10 @@ class DetailedActivity : AppCompatActivity() {
                 lineData = LineData(lineDataSet)
                 line_chart.data = lineData
                 lineDataSet.color = Color.BLACK
-                lineDataSet.setColors(*ColorTemplate.MATERIAL_COLORS)
-                lineDataSet.valueTextColor = Color.BLUE
-                lineDataSet.valueTextSize = 10f
+                lineDataSet.setColors(Color.BLACK)
+                lineDataSet.valueTextColor = Color.BLACK
+                lineDataSet.valueTextSize = 0f
                 lineDataSet.setDrawFilled(true)
-
-
             }
 
             override fun onFailure(call: Call<List<MyDataGraphItemItem>?>, t: Throwable) {
@@ -138,5 +148,8 @@ class DetailedActivity : AppCompatActivity() {
             }
             else -> true
         }
+    }
+    fun exchange(value : Double){
+
     }
 }
