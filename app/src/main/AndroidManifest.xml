@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CryptoProject">
         <activity
-            android:name=".DetailedActivity"
+            android:name=".Activity.Comment"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.DetailedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

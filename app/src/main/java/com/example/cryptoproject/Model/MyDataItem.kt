@@ -1,4 +1,4 @@
-package com.example.cryptoproject
+package com.example.cryptoproject.Model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

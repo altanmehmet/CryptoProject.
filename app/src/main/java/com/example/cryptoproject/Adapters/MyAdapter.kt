@@ -1,16 +1,13 @@
 
-package com.example.cryptoproject
+package com.example.cryptoproject.Adapters
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import android.widget.AdapterView.OnItemClickListener
-import androidx.cardview.widget.CardView
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.cryptoproject.Model.MyDataItem
+import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.RowItemsBinding
 
 class MyAdapter(val context:Context, val userList : List<MyDataItem>): RecyclerView.Adapter<MyAdapter.MyViewHolder>(){

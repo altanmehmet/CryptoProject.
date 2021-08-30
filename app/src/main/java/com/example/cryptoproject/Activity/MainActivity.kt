@@ -1,11 +1,9 @@
-package com.example.cryptoproject
+package com.example.cryptoproject.Activity
 
-import android.content.Context
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
+import com.example.cryptoproject.Model.LoginFragment
+import com.example.cryptoproject.R
 
 class MainActivity : AppCompatActivity() {
     //private lateinit var binding: ActivityMainBinding

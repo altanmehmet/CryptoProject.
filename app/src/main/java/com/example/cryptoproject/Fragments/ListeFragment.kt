@@ -1,12 +1,17 @@
-package com.example.cryptoproject
+package com.example.cryptoproject.Fragments
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cryptoproject.Activity.DetailedActivity
+import com.example.cryptoproject.Adapters.MyAdapter
+import com.example.cryptoproject.ApiInterface
+import com.example.cryptoproject.Model.LoginFragment
+import com.example.cryptoproject.Model.MyDataItem
+import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.FragmentListeBinding
 import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
@@ -44,7 +49,7 @@ class ListeFragment : Fragment() {
                 tempArrayList.addAll(liste)
                 myAdapter = MyAdapter(activity!!.baseContext,tempArrayList)
                 binding.recyclerV.adapter = myAdapter
-                myAdapter.setOnItemClickListener(object :MyAdapter.onItemClickListener{
+                myAdapter.setOnItemClickListener(object : MyAdapter.onItemClickListener{
                     override fun onItemClick(position: Int) {
                         val intent = Intent(requireActivity(), DetailedActivity::class.java)
                         val dataI = MyDataItem(circulating_supply = liste[position].circulating_supply

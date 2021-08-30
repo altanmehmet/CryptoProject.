@@ -1,4 +1,4 @@
-package com.example.cryptoproject
+package com.example.cryptoproject.Activity
 
 import android.content.Intent
 import android.graphics.Color
@@ -7,14 +7,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Switch
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cryptoproject.*
+import com.example.cryptoproject.Model.MyDataGraphItemItem
+import com.example.cryptoproject.Model.MyDataItem
 import com.example.cryptoproject.databinding.ActivityDetailedBinding
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_detailed.*
 import retrofit2.Call
@@ -22,12 +23,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.ZoneId
 import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -48,6 +45,10 @@ class DetailedActivity : AppCompatActivity() {
         binding = ActivityDetailedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
+        binding.button.setOnClickListener {
+            val intent = Intent(this, Comment::class.java)
+            startActivity(intent)
+        }
         val user = intent.extras!!.getSerializable("ist") as MyDataItem
         equalCurrency = user.currency.toString()
         cryptoText = user.price!!.toDouble()
@@ -119,6 +120,7 @@ class DetailedActivity : AppCompatActivity() {
 
                 lineDataSet = LineDataSet(linelist, "Monthly Price")
                 lineData = LineData(lineDataSet)
+                line_chart.setNoDataText("Description that you want");
                 line_chart.data = lineData
                 lineDataSet.color = Color.BLACK
                 lineDataSet.setColors(Color.BLACK)
@@ -144,7 +146,7 @@ class DetailedActivity : AppCompatActivity() {
         return when(item?.itemId){
             R.id.sign_out -> {
                 auth.signOut()
-                val intent = Intent(this,MainActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
                 true

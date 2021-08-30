@@ -1,17 +1,15 @@
-package com.example.cryptoproject
+package com.example.cryptoproject.Model
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.FragmentSignUpBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import java.util.*
 
 class SignUpFragment : Fragment() {
     private lateinit var emailS: String;
@@ -39,7 +37,7 @@ class SignUpFragment : Fragment() {
             emailS = binding.email.text.toString();
             passwordS = binding.password.text.toString();
             nameS = binding.name.text.toString();
-            SignUp(emailS, passwordS)
+            SignUp(emailS, passwordS,nameS)
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             val fragment = LoginFragment()
             fragmentTransaction.replace(R.id.fragment_container, fragment)
@@ -65,7 +63,7 @@ class SignUpFragment : Fragment() {
         _binding = null
     }
 
-    private fun SignUp(mail: String, sifre: String) {
+    private fun SignUp(mail: String, sifre: String,userName : String) {
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(mail, sifre)
             .addOnCompleteListener(object : OnCompleteListener<AuthResult> {

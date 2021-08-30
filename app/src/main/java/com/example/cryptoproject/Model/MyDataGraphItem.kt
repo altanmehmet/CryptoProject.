@@ -1,3 +1,3 @@
-package com.example.cryptoproject
+package com.example.cryptoproject.Model
 
 class MyDataGraphItem : ArrayList<MyDataGraphItemItem>()

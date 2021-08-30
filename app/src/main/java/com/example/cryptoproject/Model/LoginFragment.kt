@@ -1,20 +1,18 @@
-package com.example.cryptoproject
+package com.example.cryptoproject.Model
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toolbar
 import com.example.cryptoproject.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import android.content.SharedPreferences
 import android.text.Editable
-import kotlinx.android.synthetic.main.fragment_login.*
+import com.example.cryptoproject.Fragments.ListeFragment
+import com.example.cryptoproject.R
 
 //mehmetturkmen200@hotmail.com
 
