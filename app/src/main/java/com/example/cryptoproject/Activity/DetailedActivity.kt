@@ -46,7 +46,7 @@ class DetailedActivity : AppCompatActivity() {
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
         binding.button.setOnClickListener {
-            val intent = Intent(this, Comment::class.java)
+            val intent = Intent(this, CommentActivity::class.java)
             startActivity(intent)
         }
         val user = intent.extras!!.getSerializable("ist") as MyDataItem

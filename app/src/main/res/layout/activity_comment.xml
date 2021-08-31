@@ -4,43 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Comment">
+    tools:context=".Activity.CommentActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
-        android:layout_width="408dp"
-        android:layout_height="585dp"
+        android:layout_width="400dp"
+        android:layout_height="559dp"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
 
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/row_items_comment" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:id="@+id/linearLayout3"
+        android:layout_width="406dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView1">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/commentText"
+            android:layout_width="355dp"
+            android:layout_height="84dp"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:ems="10"
             android:hint="yorum yap"
             android:inputType="textPersonName" />
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="172dp"
-            android:layout_height="match_parent"
+            android:id="@+id/imageClick"
+            android:layout_width="101dp"
+            android:layout_height="51dp"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_baseline_send_24" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="399dp"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView1"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="97dp"
+            android:layout_height="52dp"
+            android:gravity="center"
+            android:text="Username : "
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/userNameText"
+            android:layout_width="199dp"
+            android:layout_height="49dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

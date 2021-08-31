@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CryptoProject">
         <activity
-            android:name=".Activity.Comment"
+            android:name=".Activity.CommentActivity"
             android:exported="true" />
         <activity
             android:name=".Activity.DetailedActivity"
