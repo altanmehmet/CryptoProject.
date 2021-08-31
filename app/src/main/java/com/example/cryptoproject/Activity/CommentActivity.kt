@@ -1,32 +1,36 @@
 package com.example.cryptoproject.Activity
 
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptoproject.Model.CommentDataClass
 import com.example.cryptoproject.Adapters.MyCommentAdapter
+import com.example.cryptoproject.Model.CommentDataClass
 import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.ActivityCommentBinding
-import com.example.cryptoproject.databinding.ActivityDetailedBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.*
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.auth.User
 import kotlinx.android.synthetic.main.activity_comment.*
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class CommentActivity : AppCompatActivity() {
-    private lateinit var dbref : DatabaseReference
-    private lateinit var userRecyclerView : RecyclerView
-    private lateinit var binding : ActivityCommentBinding
-    private lateinit var userArrayList : ArrayList<CommentDataClass>
-    private lateinit var auth : FirebaseAuth
+    private lateinit var userRecyclerView: RecyclerView
+    private lateinit var binding: ActivityCommentBinding
+    private lateinit var userArrayList: ArrayList<CommentDataClass>
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db:FirebaseFirestore
+    private lateinit var myAdapter:MyCommentAdapter
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,9 @@ class CommentActivity : AppCompatActivity() {
         userRecyclerView.layoutManager = LinearLayoutManager(this)
         userRecyclerView.setHasFixedSize(true)
         userArrayList = arrayListOf<CommentDataClass>()
+        myAdapter = MyCommentAdapter(userArrayList)
+        recyclerView1.adapter = myAdapter
+        EventChangeListener()
         binding.imageClick.setOnClickListener {
             val comment = binding.commentText.text.toString()
             val username = binding.userNameText.text.toString()
@@ -44,42 +51,50 @@ class CommentActivity : AppCompatActivity() {
             var newDate = dateTime.atOffset(ZoneOffset.UTC)
             val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.getDefault())
             val formatted = newDate.format(formatter)
-            dbref = FirebaseDatabase.getInstance().getReference("Users")
-            val User = CommentDataClass(username,comment,formatted.toString())
-            dbref.child(randomUUID()).setValue(User).addOnFailureListener {
-                Toast.makeText(this,"Failed",Toast.LENGTH_SHORT).show()
-            }.addOnSuccessListener {
-                binding.commentText.text.clear()
-                binding.userNameText.text.clear()
-            }
+            saveFireStore(comment,username,formatted)
         }
-        getUserData()
     }
 
-    private fun getUserData() {
-        dbref = FirebaseDatabase.getInstance().getReference("Users")
-
-        dbref.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    for(userSnapshot in snapshot.children){
-                        val user = userSnapshot.getValue(CommentDataClass::class.java)
-
-                        userArrayList.add(user!!)
+    private fun EventChangeListener() {
+        db = FirebaseFirestore.getInstance()
+        db.collection("Users")
+            .addSnapshotListener(object : EventListener<QuerySnapshot>{
+                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                    if(error != null){
+                        Log.e("Firestore error",error.message.toString())
+                        return
                     }
-                    userRecyclerView.adapter = MyCommentAdapter(userArrayList)
+                    for(dc : DocumentChange in value?.documentChanges!!){
+                        if(dc.type == DocumentChange.Type.ADDED){
+                            userArrayList.add(dc.document.toObject(CommentDataClass::class.java))
+                        }
+                    }
+                    myAdapter.notifyDataSetChanged()
                 }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                println("hata")
-            }
+            })
+    }
 
-        })
-    }
-    private fun randomUUID(): String {
-        val uuid = UUID.randomUUID()
-        val uuidString = uuid.toString()
-        return uuidString
-    }
+
+    fun randomUUID(): String {
+            val uuid = UUID.randomUUID()
+            val uuidString = uuid.toString()
+            return uuidString
+        }
+
+        fun saveFireStore(comment: String, username: String, date: String) {
+            db = FirebaseFirestore.getInstance()
+            val user: MutableMap<String, Any> = HashMap()
+            user["username"] = username
+            user["comment"] = comment
+            user["date"] = date
+            db.collection("Users")
+                .add(user)
+                .addOnSuccessListener {
+                    Toast.makeText(this,"record added",Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this,"Failure",Toast.LENGTH_SHORT).show()
+                }
+        }
 }

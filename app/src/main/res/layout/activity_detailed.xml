@@ -12,18 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Activity.MainActivity">
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/backgroundtext"
-            android:text="Yorum Yap"
-            app:layout_constraintBottom_toTopOf="@+id/line_chart"
-            app:layout_constraintEnd_toEndOf="@+id/line_chart"
-            app:layout_constraintHorizontal_bias="0.056"
-            app:layout_constraintStart_toStartOf="@+id/line_chart"
-            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/currencyText"
             android:layout_width="112dp"
@@ -201,6 +190,16 @@
                     android:layout_height="74dp"
                     android:layout_gravity="center" />
             </LinearLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:background="@drawable/backgroundtext"
+                android:gravity="center"
+                android:text="Yorum Yap" />
         </LinearLayout>
 
 
