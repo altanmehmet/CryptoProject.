@@ -158,14 +158,14 @@
                     android:layout_height="50dp"
 
                     android:background="@drawable/backgroundtext"
-                    android:text="Convert" />
+                    android:text="@string/convert" />
 
                 <Switch
                     android:id="@+id/switchConvert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="çevir"
+                    android:text="@string/cevir"
                     android:textColor="#F3EEEE" />
             </LinearLayout>
 
@@ -199,7 +199,7 @@
 
                 android:background="@drawable/backgroundtext"
                 android:gravity="center"
-                android:text="Yorum Yap" />
+                android:text="@string/yorum" />
         </LinearLayout>
 
 

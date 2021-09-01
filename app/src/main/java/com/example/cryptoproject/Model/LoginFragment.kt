@@ -10,12 +10,16 @@ import android.widget.Toolbar
 import com.example.cryptoproject.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.preference.PreferenceManager
 import android.text.Editable
+import androidx.appcompat.app.AppCompatActivity
 import com.example.cryptoproject.Fragments.ListeFragment
 import com.example.cryptoproject.R
+import java.util.*
+
 
 //mehmetturkmen200@hotmail.com
-
 
 
 
@@ -27,6 +31,9 @@ class LoginFragment : Fragment() {
     private lateinit var passwordS : String
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+    lateinit var locale: Locale
+    private var currentLanguage = ""
+    private var currentLang: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
@@ -37,12 +44,16 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        preferences = requireActivity().getSharedPreferences("com.example.cryptoproject",Context.MODE_PRIVATE)
+        preferences = requireActivity().getSharedPreferences(
+            "com.example.cryptoproject",
+            Context.MODE_PRIVATE
+        )
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
         val savedString: String? = preferences.getString("stringValue", "Kayıt Yok")
-        val savedPassword : String? = preferences.getString("intValue","bos")
+        val savedPassword: String? = preferences.getString("intValue", "bos")
         val savedChecked: Boolean = preferences.getBoolean("isChecked", false)
+
         if(savedChecked){
             binding.email.text =Editable.Factory.getInstance().newEditable(savedString)
             binding.password.text = Editable.Factory.getInstance().newEditable(savedPassword.toString())
@@ -53,6 +64,12 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        binding.imageView4.setOnClickListener {
+            setLocale("tr")
+        }
+        binding.imageView.setOnClickListener {
+            setLocale("en")
+        }
         binding.signupButton.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             val fragment = SignUpFragment()
@@ -93,5 +110,22 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
+    private fun setLocale(localeName: String) {
+        if (localeName != currentLanguage) {
+            locale = Locale(localeName)
+            val res = resources
+            val dm = res.displayMetrics
+            val conf = res.configuration
+            conf.locale = locale
+            res.updateConfiguration(conf, dm)
+            val fragment = LoginFragment()
+            val bundle = Bundle()
+            bundle.putString(currentLang, localeName)
+            fragment.arguments = bundle
+            requireActivity().recreate()
+        } else {
+            Toast.makeText(
+                requireContext(), "Language already selected)!", Toast.LENGTH_SHORT).show();
+        }
+    }
     }

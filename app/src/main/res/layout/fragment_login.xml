@@ -15,8 +15,8 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/textbg"
         android:ems="10"
+        android:hint="@string/password"
         android:inputType="textPassword"
-        android:hint="Password"
         android:textAlignment="center"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -63,7 +63,7 @@
         android:id="@+id/textView2"
         android:layout_width="222dp"
         android:layout_height="65dp"
-        android:text="Crypto Tracker"
+        android:text="@string/loginText"
         android:textAlignment="center"
         android:textColor="@color/purple_500"
         android:textSize="30sp"
@@ -80,7 +80,7 @@
         android:layout_marginBottom="23dp"
         android:background="@drawable/textbg"
         android:ems="10"
-        android:hint="E-Mail"
+        android:hint="@string/email"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textSize="14sp"
@@ -96,7 +96,7 @@
         android:layout_width="250dp"
         android:layout_height="55dp"
         android:background="@drawable/backgroundbtn"
-        android:text="Logın"
+        android:text="@string/loginButton"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/signupButton"
@@ -109,7 +109,7 @@
         android:layout_width="173dp"
         android:layout_height="28dp"
         android:layout_marginBottom="100dp"
-        android:text="Sign Up"
+        android:text="@string/signUp"
         android:textAlignment="center"
         android:textSize="16dp"
         android:textStyle="bold|italic"
@@ -122,10 +122,30 @@
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remember Me"
+        android:text="@string/rememberMe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/en" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="73dp"
+        android:layout_height="85dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:srcCompat="@drawable/turk" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

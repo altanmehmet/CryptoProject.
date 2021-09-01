@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CryptoProject</string>
+    <string name="loginText">Crypto Tracker</string>
+    <string name="loginButton">Login</string>
+    <string name="signUp">Sign Up</string>
+    <string name="rememberMe">Remember me</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="signUpBack">Already have an account? Click here!</string>
+    <string name="name">Name</string>
+    <string name="convert">Calculate</string>
+    <string name="cevir">Switch the calculation</string>
+    <string name="yorum">See the comments or leave one!</string>
+    <string name="yorum1">leave your comment here</string>
+    <string name="username">Username : </string>
+    <string name="date">Date : </string>
+    <string name="detay">Click for more detail </string>
 </resources>
