@@ -152,13 +152,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/exchange"
                     android:layout_width="235dp"
                     android:layout_height="50dp"
 
                     android:background="@drawable/backgroundtext"
-                    android:text="@string/convert" />
+                    android:text="@string/convert"
+                    android:textColor="@color/white" />
 
                 <Switch
                     android:id="@+id/switchConvert"
@@ -191,7 +192,7 @@
                     android:layout_gravity="center" />
             </LinearLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -199,7 +200,8 @@
 
                 android:background="@drawable/backgroundtext"
                 android:gravity="center"
-                android:text="@string/yorum" />
+                android:text="@string/yorum"
+                android:textColor="@color/white" />
         </LinearLayout>
 
 

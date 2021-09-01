@@ -52,7 +52,7 @@ class DetailedActivity : AppCompatActivity() {
         val user = intent.extras!!.getSerializable("ist") as MyDataItem
         equalCurrency = user.currency.toString()
         cryptoText = user.price!!.toDouble()
-        //binding.desc.text = "Çevirmek istediğiniz para miktarını giriniz"
+        binding.desc.text = "Çevirmek istediğiniz para miktarını giriniz"
         binding.exchange.setOnClickListener {
             dollarText = binding.textView5.text.toString().toDouble()
             result = divide(dollarText,cryptoText)
@@ -92,8 +92,8 @@ class DetailedActivity : AppCompatActivity() {
                 }
                 lineDataSet = LineDataSet(linelist, "Monthly Price")
                 lineData = LineData(lineDataSet)
-                line_chart.setNoDataText("Description that you want");
                 line_chart.data = lineData
+                line_chart.invalidate()
                 lineDataSet.color = Color.BLACK
                 lineDataSet.setColors(Color.BLACK)
                 lineDataSet.valueTextColor = Color.BLACK
