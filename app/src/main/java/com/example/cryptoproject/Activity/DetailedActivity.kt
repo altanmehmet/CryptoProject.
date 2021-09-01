@@ -52,7 +52,7 @@ class DetailedActivity : AppCompatActivity() {
         val user = intent.extras!!.getSerializable("ist") as MyDataItem
         equalCurrency = user.currency.toString()
         cryptoText = user.price!!.toDouble()
-        binding.desc.text = "Çevirmek istediğiniz para miktarını giriniz"
+        //binding.desc.text = "Çevirmek istediğiniz para miktarını giriniz"
         binding.exchange.setOnClickListener {
             dollarText = binding.textView5.text.toString().toDouble()
             result = divide(dollarText,cryptoText)
@@ -87,37 +87,9 @@ class DetailedActivity : AppCompatActivity() {
             ) {
                 val responseBody = response.body()!!
                 linelist = ArrayList()
-                linelist.add(Entry(1f, responseBody[0].prices[0].toFloat()))
-                linelist.add(Entry(2f, responseBody[0].prices[1].toFloat()))
-                linelist.add(Entry(3f, responseBody[0].prices[2].toFloat()))
-                linelist.add(Entry(4f, responseBody[0].prices[3].toFloat()))
-                linelist.add(Entry(5f, responseBody[0].prices[4].toFloat()))
-                linelist.add(Entry(6f, responseBody[0].prices[5].toFloat()))
-                linelist.add(Entry(7f, responseBody[0].prices[6].toFloat()))
-                linelist.add(Entry(8f, responseBody[0].prices[7].toFloat()))
-                linelist.add(Entry(9f, responseBody[0].prices[8].toFloat()))
-                linelist.add(Entry(10f, responseBody[0].prices[9].toFloat()))
-                linelist.add(Entry(11f, responseBody[0].prices[10].toFloat()))
-                linelist.add(Entry(12f, responseBody[0].prices[11].toFloat()))
-                linelist.add(Entry(13f, responseBody[0].prices[12].toFloat()))
-                linelist.add(Entry(14f, responseBody[0].prices[13].toFloat()))
-                linelist.add(Entry(15f, responseBody[0].prices[14].toFloat()))
-                linelist.add(Entry(16f, responseBody[0].prices[15].toFloat()))
-                linelist.add(Entry(17f, responseBody[0].prices[16].toFloat()))
-                linelist.add(Entry(18f, responseBody[0].prices[17].toFloat()))
-                linelist.add(Entry(19f, responseBody[0].prices[18].toFloat()))
-                linelist.add(Entry(20f, responseBody[0].prices[19].toFloat()))
-                linelist.add(Entry(21f, responseBody[0].prices[20].toFloat()))
-                linelist.add(Entry(22f, responseBody[0].prices[21].toFloat()))
-                linelist.add(Entry(23f, responseBody[0].prices[22].toFloat()))
-                linelist.add(Entry(24f, responseBody[0].prices[23].toFloat()))
-                linelist.add(Entry(25f, responseBody[0].prices[24].toFloat()))
-                linelist.add(Entry(26f, responseBody[0].prices[25].toFloat()))
-                linelist.add(Entry(27f, responseBody[0].prices[26].toFloat()))
-                linelist.add(Entry(28f, responseBody[0].prices[27].toFloat()))
-                linelist.add(Entry(29f, responseBody[0].prices[28].toFloat()))
-                linelist.add(Entry(30f, responseBody[0].prices[29].toFloat()))
-
+                for (i in responseBody[0].prices.indices) {
+                    linelist.add(Entry(i.toFloat(), responseBody[0].prices[i].toFloat()))
+                }
                 lineDataSet = LineDataSet(linelist, "Monthly Price")
                 lineData = LineData(lineDataSet)
                 line_chart.setNoDataText("Description that you want");
