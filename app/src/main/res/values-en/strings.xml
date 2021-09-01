@@ -16,5 +16,8 @@
     <string name="username">Username : </string>
     <string name="date">Date : </string>
     <string name="detay">Click for more detail </string>
-    <string name="dönüstür">Find out how much money does worth!  </string>
+    <string name="donustur">Find out how much %1$s does your money worth! </string>
+    <string name="donusturTers">Find out how much money does your %1$s worth! </string>
+    <string name="donusturSonuc"> You can buy %1$f %2$s! </string>
+    <string name="donusturSonucTers">  You need to pay %1$f dollar! </string>
 </resources>

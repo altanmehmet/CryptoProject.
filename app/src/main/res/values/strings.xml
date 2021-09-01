@@ -15,4 +15,8 @@
     <string name="date">Tarih : </string>
     <string name="yorum1">yorum yap</string>
     <string name="detay">Daha fazla detay için tıklayın </string>
+    <string name="donustur">Elinizdeki para kaç %1$s öğrenin! </string>
+    <string name="donusturTers">Elinizdeki %1$s kaç para ediyor öğrenin! </string>
+    <string name="donusturSonuc"> %1$f %2$s alabilirsiniz! </string>
+    <string name="donusturSonucTers"> %1$f dolar ödemeniz gerekli! </string>
 </resources>

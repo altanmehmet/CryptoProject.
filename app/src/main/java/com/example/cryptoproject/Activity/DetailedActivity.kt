@@ -52,11 +52,11 @@ class DetailedActivity : AppCompatActivity() {
         val user = intent.extras!!.getSerializable("ist") as MyDataItem
         equalCurrency = user.currency.toString()
         cryptoText = user.price!!.toDouble()
-        binding.desc.text = "Çevirmek istediğiniz para miktarını giriniz"
+        binding.desc.text = getString(R.string.donustur,equalCurrency)
         binding.exchange.setOnClickListener {
             dollarText = binding.textView5.text.toString().toDouble()
             result = divide(dollarText,cryptoText)
-            binding.textView6.text = result.toString() + " " + equalCurrency + " " + "alabilirsiniz."
+            binding.textView6.text = getString(R.string.donusturSonuc,result,equalCurrency)
         }
         switch()
         getMyGraphData()
@@ -129,20 +129,20 @@ class DetailedActivity : AppCompatActivity() {
     fun switch(){
         binding.switchConvert.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                binding.desc.text = "Çevirmek istediğiniz"+ " " + equalCurrency + " " + "miktarını giriniz"
+                binding.desc.text = getString(R.string.donusturTers,equalCurrency)
                 binding.exchange.setOnClickListener {
                     dollarText = binding.textView5.text.toString().toDouble()
                     result = dollarText * cryptoText
-                    binding.textView6.text = result.toString() + "ödemeniz gerekli"
+                    binding.textView6.text = getString(R.string.donusturSonucTers,result)
                 }
 
 
             } else {
-                binding.desc.text = "Çevirmek istediğiniz para miktarını giriniz"
+                binding.desc.text = getString(R.string.donustur,equalCurrency)
                 binding.exchange.setOnClickListener {
                     dollarText = binding.textView5.text.toString().toDouble()
                     result = divide(dollarText,cryptoText)
-                    binding.textView6.text = result.toString() + " " + equalCurrency + " " + "alabilirsiniz."
+                    binding.textView6.text = getString(R.string.donusturSonuc,result,equalCurrency)
                 }
 
             }
