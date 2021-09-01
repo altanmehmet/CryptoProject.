@@ -86,7 +86,7 @@
             android:layout_marginEnd="30dp"
             android:backgroundTint="@android:color/transparent"
             android:hint="@string/password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:padding="15dp"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
