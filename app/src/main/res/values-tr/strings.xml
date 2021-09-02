@@ -20,4 +20,5 @@
     <string name="donusturTers">Elinizdeki %1$s kaç para ediyor öğrenin! </string>
     <string name="donusturSonuc"> %1$f %2$s alabilirsiniz! </string>
     <string name="donusturSonucTers"> %1$f dolar ödemeniz gerekli! </string>
+    <string name="emirVer">Fiyat takibi oluştur</string>
 </resources>

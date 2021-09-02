@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:id="@+id/containo"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +44,7 @@
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.658"
+            app:layout_constraintHorizontal_bias="0.635"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/currencyText" />
 
@@ -145,6 +146,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_baseline_attach_money_24" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -192,16 +194,32 @@
                     android:layout_gravity="center" />
             </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="12sp"
-                android:background="@drawable/backgroundtext"
-                android:gravity="center"
-                android:text="@string/yorum"
-                android:textColor="@color/white" />
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="75dp"
+                    android:background="@drawable/backgroundtext"
+                    android:gravity="center"
+                    android:text="@string/yorum"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/commandBtn"
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/backgroundbtn"
+                    android:text="@string/emirVer" />
+
+            </LinearLayout>
         </LinearLayout>
 
 

@@ -45,13 +45,18 @@ class DetailedActivity : AppCompatActivity() {
         binding = ActivityDetailedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
-        binding.button.setOnClickListener {
-            val intent = Intent(this, CommentActivity::class.java)
+        binding.commandBtn.setOnClickListener {
+            val intent = Intent(this, NotificationActivity::class.java)
+            intent.putExtra("key",equalCurrency)
             startActivity(intent)
         }
         val user = intent.extras!!.getSerializable("ist") as MyDataItem
         equalCurrency = user.currency.toString()
         cryptoText = user.price!!.toDouble()
+        binding.button.setOnClickListener {
+            val intent = Intent(this, CommentActivity::class.java)
+            startActivity(intent)
+        }
         binding.desc.text = getString(R.string.donustur,equalCurrency)
         binding.exchange.setOnClickListener {
             dollarText = binding.textView5.text.toString().toDouble()
