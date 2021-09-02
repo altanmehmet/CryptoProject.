@@ -1,4 +1,4 @@
-package com.example.cryptoproject.Model
+package com.example.cryptoproject.Fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -10,11 +10,7 @@ import android.widget.Toolbar
 import com.example.cryptoproject.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import android.content.SharedPreferences
-import android.content.res.Configuration
-import android.preference.PreferenceManager
 import android.text.Editable
-import androidx.appcompat.app.AppCompatActivity
-import com.example.cryptoproject.Fragments.ListeFragment
 import com.example.cryptoproject.R
 import java.util.*
 

@@ -1,8 +1,8 @@
-package com.example.cryptoproject.Model
+package com.example.cryptoproject.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.FragmentSignUpBinding
@@ -10,12 +10,13 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUpFragment : Fragment() {
     private lateinit var emailS: String;
     private lateinit var passwordS: String;
-    private lateinit var nameS: String;
-    private lateinit var surnameS: String;
+    private lateinit var nameS: String
+    private lateinit var db:FirebaseFirestore
     private var auth: FirebaseAuth? = null
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
@@ -32,12 +33,11 @@ class SignUpFragment : Fragment() {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.signbutton.setOnClickListener {
-            Toast.makeText(requireContext(), "password or email is incorrect!", Toast.LENGTH_SHORT)
-                .show()
             emailS = binding.email.text.toString();
             passwordS = binding.password.text.toString();
             nameS = binding.name.text.toString();
-            SignUp(emailS, passwordS,nameS)
+            SignUp(emailS, passwordS)
+            saveFireStore(nameS)
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             val fragment = LoginFragment()
             fragmentTransaction.replace(R.id.fragment_container, fragment)
@@ -63,7 +63,7 @@ class SignUpFragment : Fragment() {
         _binding = null
     }
 
-    private fun SignUp(mail: String, sifre: String,userName : String) {
+    private fun SignUp(mail: String, sifre: String) {
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(mail, sifre)
             .addOnCompleteListener(object : OnCompleteListener<AuthResult> {
@@ -76,6 +76,18 @@ class SignUpFragment : Fragment() {
             })
 
     }
-
+    fun saveFireStore(username: String) {
+        db = FirebaseFirestore.getInstance()
+        val user1: MutableMap<String, Any> = HashMap()
+        user1["username"] = username
+        db.collection("Users")
+            .add(user1)
+            .addOnSuccessListener {
+                println("başarılı")
+            }
+            .addOnFailureListener {
+                Log.d("tag","başarısız")
+            }
+    }
 
 }

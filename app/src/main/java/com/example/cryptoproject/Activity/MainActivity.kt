@@ -2,7 +2,7 @@ package com.example.cryptoproject.Activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cryptoproject.Model.LoginFragment
+import com.example.cryptoproject.Fragments.LoginFragment
 import com.example.cryptoproject.R
 
 class MainActivity : AppCompatActivity() {

@@ -51,7 +51,7 @@ class CommentActivity : AppCompatActivity() {
             var newDate = dateTime.atOffset(ZoneOffset.UTC)
             val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.getDefault())
             val formatted = newDate.format(formatter)
-            saveFireStore(comment,username,formatted)
+            saveFireStore(comment,formatted)
         }
     }
 
@@ -82,10 +82,9 @@ class CommentActivity : AppCompatActivity() {
             return uuidString
         }
 
-        fun saveFireStore(comment: String, username: String, date: String) {
+        fun saveFireStore(comment: String, date: String) {
             db = FirebaseFirestore.getInstance()
             val user: MutableMap<String, Any> = HashMap()
-            user["username"] = username
             user["comment"] = comment
             user["date"] = date
             db.collection("Users")
