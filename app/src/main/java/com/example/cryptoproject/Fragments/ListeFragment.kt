@@ -13,6 +13,7 @@ import com.example.cryptoproject.Model.MyDataItem
 import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.FragmentListeBinding
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.fragment_liste.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,7 +49,7 @@ class ListeFragment : Fragment() {
                 tempArrayList.addAll(liste)
                 myAdapter = MyAdapter(activity!!.baseContext,tempArrayList)
                 binding.recyclerV.adapter = myAdapter
-                myAdapter.setOnItemClickListener(object : MyAdapter.onItemClickListener{
+                myAdapter.setOnItemClickListener(object : MyAdapter.OnItemClickListener{
                     override fun onItemClick(position: Int) {
                         val intent = Intent(requireActivity(), DetailedActivity::class.java)
                         val dataI = MyDataItem(circulating_supply = liste[position].circulating_supply
@@ -89,8 +90,6 @@ class ListeFragment : Fragment() {
             }
         })
     }
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -152,6 +151,12 @@ class ListeFragment : Fragment() {
                 val fragment = LoginFragment()
                 fragmentTransaction.replace(R.id.fragment_container, fragment)
                 fragmentTransaction.commit()
+                true
+            }
+            R.id.menu_refresh -> {
+                tempArrayList.clear()
+                binding.recyclerV.adapter!!.notifyDataSetChanged()
+                getMyData()
                 true
             }
             else -> true

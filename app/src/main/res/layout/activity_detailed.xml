@@ -187,11 +187,18 @@
                     android:textSize="20sp"
                     android:textStyle="bold|italic" />
 
-                <ImageView
-                    android:id="@+id/image_movieCrypto"
-                    android:layout_width="143dp"
-                    android:layout_height="74dp"
-                    android:layout_gravity="center" />
+                <EditText
+                    android:id="@+id/editTextTextPersonName"
+                    android:layout_width="108dp"
+                    android:layout_height="79dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:textColorHint="@color/white"
+                    android:hint="para birimini girin"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -210,14 +217,6 @@
                     android:text="@string/yorum"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/commandBtn"
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="50dp"
-                    android:background="@drawable/backgroundbtn"
-                    android:text="@string/emirVer" />
 
             </LinearLayout>
         </LinearLayout>

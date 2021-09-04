@@ -11,12 +11,15 @@ import retrofit2.http.Query
 //7ce49c49d0a6b5e38b62535e2924fa187452dc36
 interface ApiInterface {
     @GET("currencies/ticker?key=7ce49c49d0a6b5e38b62535e2924fa187452dc36&interval=1d,30d&convert=USD&per-page=100&page=1")
-    fun getData(): Call<List<MyDataItem>>
-    @GET("currencies/ticker?key=7ce49c49d0a6b5e38b62535e2924fa187452dc36&&interval=1d,30d&convert=USD&per-page=100&page=1")
-    fun getNotificationData(@Query(
+     fun getData(): Call<List<MyDataItem>>
+    @GET("currencies/ticker?key=7ce49c49d0a6b5e38b62535e2924fa187452dc36&&interval=1d,30d&&per-page=100&page=1")
+     fun getConvertData(@Query(
         "ids"
-    ) ids: String):
-     Call<List<MyDataItem>>
+    ) ids: String,@Query(
+        "convert"
+    ) convert: String
+    ):
+            Call<List<MyDataItem>>
     @GET("https://api.nomics.com/v1/currencies/sparkline?key=7ce49c49d0a6b5e38b62535e2924fa187452dc36&&&")
     fun getDataGraph(@Query(
         "ids"

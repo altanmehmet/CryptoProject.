@@ -1,5 +1,6 @@
 package com.example.cryptoproject.Activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -10,6 +11,7 @@ import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cryptoproject.*
+import com.example.cryptoproject.Adapters.MyAdapter
 import com.example.cryptoproject.Model.MyDataGraphItemItem
 import com.example.cryptoproject.Model.MyDataItem
 import com.example.cryptoproject.databinding.ActivityDetailedBinding
@@ -32,6 +34,7 @@ class DetailedActivity : AppCompatActivity() {
     val BASE_URL = "https://api.nomics.com/v1/"
     private lateinit var binding: ActivityDetailedBinding
     private var equalCurrency = " "
+    private var convertCurrency = ""
     private lateinit var auth : FirebaseAuth
     lateinit var lineDataSet: LineDataSet
     lateinit var linelist: ArrayList<Entry>
@@ -39,17 +42,13 @@ class DetailedActivity : AppCompatActivity() {
     private var dollarText : Double = 0.0
     private var cryptoText : Double = 0.0
     private var result : Double = 0.0
+    var stringBuild : String = ""
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
-        binding.commandBtn.setOnClickListener {
-            val intent = Intent(this, NotificationActivity::class.java)
-            intent.putExtra("key",equalCurrency)
-            startActivity(intent)
-        }
         val user = intent.extras!!.getSerializable("ist") as MyDataItem
         equalCurrency = user.currency.toString()
         cryptoText = user.price!!.toDouble()
@@ -86,7 +85,7 @@ class DetailedActivity : AppCompatActivity() {
         val retrofitData = retrofitBuilder.getDataGraph(equalCurrency,newDate.toString())
 
         retrofitData.enqueue(object : Callback<List<MyDataGraphItemItem>?> {
-            override fun onResponse(
+            override  fun onResponse(
                 call: Call<List<MyDataGraphItemItem>?>,
                 response: Response<List<MyDataGraphItemItem>?>
             ) {
@@ -102,7 +101,7 @@ class DetailedActivity : AppCompatActivity() {
                 lineDataSet.color = Color.BLACK
                 lineDataSet.setColors(Color.BLACK)
                 lineDataSet.valueTextColor = Color.BLACK
-                lineDataSet.valueTextSize = 0f
+                lineDataSet.valueTextSize = 15f
                 lineDataSet.setDrawFilled(true)
             }
 
@@ -112,7 +111,6 @@ class DetailedActivity : AppCompatActivity() {
         })
 
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
        this.menuInflater.inflate(R.menu.menu_item,menu)
         return super.onCreateOptionsMenu(menu)
@@ -128,6 +126,10 @@ class DetailedActivity : AppCompatActivity() {
                 finish()
                 true
             }
+            R.id.menu_refresh -> {
+                this.recreate()
+                true
+            }
             else -> true
         }
     }
@@ -137,7 +139,7 @@ class DetailedActivity : AppCompatActivity() {
                 binding.desc.text = getString(R.string.donusturTers,equalCurrency)
                 binding.exchange.setOnClickListener {
                     dollarText = binding.textView5.text.toString().toDouble()
-                    result = dollarText * cryptoText
+                    result = dollarText * cryptoText.toDouble()
                     binding.textView6.text = getString(R.string.donusturSonucTers,result)
                 }
 
@@ -146,7 +148,7 @@ class DetailedActivity : AppCompatActivity() {
                 binding.desc.text = getString(R.string.donustur,equalCurrency)
                 binding.exchange.setOnClickListener {
                     dollarText = binding.textView5.text.toString().toDouble()
-                    result = divide(dollarText,cryptoText)
+                    result = divide(dollarText,cryptoText.toDouble())
                     binding.textView6.text = getString(R.string.donusturSonuc,result,equalCurrency)
                 }
 
