@@ -1,7 +1,7 @@
 ### Crypto Tracker
 
 A general cryptocurrency tracking application written in Kotlin for the Android platform.[Nomics](https://p.nomics.com/cryptocurrency-bitcoin-api) were used to pull the data.Authentication and a comment system for user communication.User is able to find out various informations about the chosen currencies.
-
+---
 **Features**
 
 -Create new account / Sign-in
@@ -14,6 +14,7 @@ A general cryptocurrency tracking application written in Kotlin for the Android 
 
 -A commenting system for users to communicate 
 
+---
 
 **Used Libraries**
 
