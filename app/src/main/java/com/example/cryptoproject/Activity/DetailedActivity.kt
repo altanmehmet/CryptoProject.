@@ -101,7 +101,7 @@ class DetailedActivity : AppCompatActivity() {
                 lineDataSet.color = Color.BLACK
                 lineDataSet.setColors(Color.BLACK)
                 lineDataSet.valueTextColor = Color.BLACK
-                lineDataSet.valueTextSize = 15f
+                lineDataSet.valueTextSize = 0f
                 lineDataSet.setDrawFilled(true)
             }
 

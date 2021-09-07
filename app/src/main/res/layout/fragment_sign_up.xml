@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Fragments.SignUpFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background_image_one_signup"
-        android:scaleType="centerCrop"/>
+        android:background="@drawable/backgrounddeneme"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/signin"
@@ -19,8 +20,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
+        android:fontFamily="@font/allerta"
         android:text="@string/signUpBack"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,12 +31,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="413dp"
+        android:layout_height="553dp"
+        android:backgroundTint="@color/colorPrimary"
         android:gravity="bottom"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="178dp">
 
         <EditText
             android:id="@+id/name"
@@ -43,11 +46,12 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/allerta"
             android:hint="@string/name"
             android:inputType="textEmailAddress"
             android:padding="15dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -64,11 +68,12 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/allerta"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:padding="15dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -85,11 +90,12 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/allerta"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:padding="15dp"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" />
+            android:textColorHint="@color/colorPrimaryDark" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -107,16 +113,19 @@
 
             <TextView
                 android:id="@+id/signbutton"
-                android:layout_width="wrap_content"
+                android:layout_width="184dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
                 android:layout_marginStart="30dp"
+                android:fontFamily="@font/allerta"
                 android:padding="15dp"
                 android:text="@string/signUp"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHighlight="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold|italic" />
 
         </RelativeLayout>
 

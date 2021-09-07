@@ -35,6 +35,7 @@
                     android:id="@+id/userId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/allerta"
                     android:text="User Id"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -44,18 +45,20 @@
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
                     android:text="Title"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="17sp"
                     android:textStyle="normal" />
 
                 <TextView
                     android:id="@+id/detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/allerta"
                     android:text="@string/detay"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:textStyle="normal" />
 
             </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.cryptoproject.Fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +41,7 @@ class ListeFragment : Fragment() {
         val retrofitData = retrofitBuilder.getData()
 
         retrofitData.enqueue(object : Callback<List<MyDataItem>?> {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
                 call: Call<List<MyDataItem>?>,
                 response: Response<List<MyDataItem>?>
@@ -121,6 +123,7 @@ class ListeFragment : Fragment() {
                 TODO()
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun onQueryTextChange(newText: String?): Boolean {
                 tempArrayList.clear()
                 val searchText = newText!!.lowercase(Locale.getDefault())
@@ -130,7 +133,7 @@ class ListeFragment : Fragment() {
                             tempArrayList.add(it)
                     }
                     }
-                    binding.recyclerV.adapter?.notifyDataSetChanged()
+                    binding.recyclerV.adapter!!.notifyDataSetChanged()
                 }
                 else {
                     tempArrayList.clear()
