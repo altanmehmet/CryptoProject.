@@ -12,8 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CryptoProject">
         <activity
-            android:name=".Activity.NotificationActivity"
-            android:exported="true" />
+            android:name=".Activity.SplashScreenActivity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <activity
             android:name=".Activity.CommentActivity"
             android:exported="true" />
@@ -23,11 +30,7 @@
         <activity
             android:name=".Activity.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

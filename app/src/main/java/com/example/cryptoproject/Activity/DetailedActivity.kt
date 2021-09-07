@@ -1,6 +1,5 @@
 package com.example.cryptoproject.Activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -11,7 +10,6 @@ import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cryptoproject.*
-import com.example.cryptoproject.Adapters.MyAdapter
 import com.example.cryptoproject.Model.MyDataGraphItemItem
 import com.example.cryptoproject.Model.MyDataItem
 import com.example.cryptoproject.databinding.ActivityDetailedBinding

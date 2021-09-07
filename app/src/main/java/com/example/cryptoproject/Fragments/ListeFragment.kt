@@ -14,7 +14,6 @@ import com.example.cryptoproject.Model.MyDataItem
 import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.FragmentListeBinding
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_liste.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

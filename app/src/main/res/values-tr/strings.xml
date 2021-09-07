@@ -21,4 +21,5 @@
     <string name="donusturSonuc"> %1$f %2$s alabilirsiniz! </string>
     <string name="donusturSonucTers"> %1$f dolar ödemeniz gerekli! </string>
     <string name="emirVer">Fiyat takibi oluştur</string>
+    <string name="loading">Yükleniyor...</string>
 </resources>
