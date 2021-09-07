@@ -44,7 +44,6 @@ class MyAdapter(var context:Context, private val userList : List<MyDataItem>): R
         holder.binding.title.text = userList[position].price + " " + " $"
         Glide.with(holder.itemView.context)
             .load(userList[position].logo_url)
-            .placeholder(R.drawable.ic_launcher_background)
             .into(holder.binding.imageMovie)
     }
 

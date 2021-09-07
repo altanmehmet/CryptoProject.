@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptoproject.Activity.DetailedActivity
 import com.example.cryptoproject.Adapters.MyAdapter
-import com.example.cryptoproject.ApiInterface
+import com.example.cryptoproject.Helper.ApiInterface
 import com.example.cryptoproject.Model.MyDataItem
 import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.FragmentListeBinding
