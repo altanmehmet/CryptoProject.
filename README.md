@@ -1,3 +1,5 @@
+
+
 ### Crypto Tracker
 
 A general cryptocurrency tracking application written in Kotlin for the Android platform.[Nomics](https://p.nomics.com/cryptocurrency-bitcoin-api) were used to pull the data.Authentication and a comment system for user communication.User is able to find out various informations about the chosen currencies.
@@ -70,6 +72,10 @@ implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 ```
 
 You can find information about Firebase configuration [here](https://firebase.google.com/docs/android/setup).To get your API key you need to go to  [Nomics](https://p.nomics.com/cryptocurrency-bitcoin-api) and follow instructions.
+
+---
+
+https://user-images.githubusercontent.com/44698382/132320204-bc8a2d77-5cf1-4c27-b0db-7abbb75e3c0c.mp4
 
 ---
 
