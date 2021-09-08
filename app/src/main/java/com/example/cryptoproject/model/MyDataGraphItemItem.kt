@@ -1,4 +1,4 @@
-package com.example.cryptoproject.Model
+package com.example.cryptoproject.model
 
 data class MyDataGraphItemItem(
     val currency: String,

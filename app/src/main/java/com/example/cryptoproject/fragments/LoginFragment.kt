@@ -1,4 +1,4 @@
-package com.example.cryptoproject.Fragments
+package com.example.cryptoproject.fragments
 
 import android.content.Context
 import android.os.Bundle

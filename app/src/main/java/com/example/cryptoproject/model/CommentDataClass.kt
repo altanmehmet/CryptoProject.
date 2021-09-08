@@ -1,7 +1,4 @@
-package com.example.cryptoproject.Model
-
-import java.io.Serializable
-import java.util.*
+package com.example.cryptoproject.model
 
 data class CommentDataClass(
     var username: String? = "",

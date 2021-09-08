@@ -1,4 +1,4 @@
-package com.example.cryptoproject.Activity
+package com.example.cryptoproject.activity
 
 import android.os.Build
 import android.os.Bundle
@@ -8,8 +8,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptoproject.Adapters.MyCommentAdapter
-import com.example.cryptoproject.Model.CommentDataClass
+import com.example.cryptoproject.adapters.MyCommentAdapter
+import com.example.cryptoproject.model.CommentDataClass
 import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.ActivityCommentBinding
 import com.google.firebase.auth.FirebaseAuth

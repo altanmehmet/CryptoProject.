@@ -1,8 +1,9 @@
-package com.example.cryptoproject.Activity
+package com.example.cryptoproject.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cryptoproject.Fragments.LoginFragment
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.example.cryptoproject.fragments.LoginFragment
 import com.example.cryptoproject.R
 
 class MainActivity : AppCompatActivity() {

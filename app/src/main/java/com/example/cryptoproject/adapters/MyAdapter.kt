@@ -1,16 +1,17 @@
 
-package com.example.cryptoproject.Adapters
+package com.example.cryptoproject.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.example.cryptoproject.Model.MyDataItem
-import com.example.cryptoproject.R
+import com.example.cryptoproject.model.MyDataItem
 import com.example.cryptoproject.databinding.RowItemsBinding
+import com.example.cryptoproject.helper.Utilities.gorselIndir
+import com.example.cryptoproject.helper.Utilities.placeholderYap
 
 class MyAdapter(var context:Context, private val userList : List<MyDataItem>): RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
     private lateinit var mListener : OnItemClickListener
@@ -42,9 +43,16 @@ class MyAdapter(var context:Context, private val userList : List<MyDataItem>): R
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.userId.text = userList[position].currency
         holder.binding.title.text = userList[position].price + " " + " $"
+        val circularProgressDrawable = CircularProgressDrawable(holder.itemView.context)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+        holder.binding.imageMovie.gorselIndir(userList.get(position).logo_url,placeholderYap(holder.itemView.context))
         Glide.with(holder.itemView.context)
             .load(userList[position].logo_url)
+            .placeholder(circularProgressDrawable)
             .into(holder.binding.imageMovie)
+
     }
 
     override fun getItemCount(): Int {

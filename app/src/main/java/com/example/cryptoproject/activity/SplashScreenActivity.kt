@@ -1,4 +1,4 @@
-package com.example.cryptoproject.Activity
+package com.example.cryptoproject.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -15,11 +15,10 @@ class SplashScreenActivity : AppCompatActivity() {
         handler = Handler()
         handler.postDelayed({
 
-            // Delay and Start Activity
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
             finish()
-        } , 3000) // here we're delaying to startActivity after 3seconds
+        } , 2000)
 
     }
 }

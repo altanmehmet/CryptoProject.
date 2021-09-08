@@ -1,7 +1,6 @@
-package com.example.cryptoproject.Fragments
+package com.example.cryptoproject.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.cryptoproject.R
@@ -12,9 +11,8 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
-import kotlin.collections.HashMap
 
-    class SignUpFragment : Fragment() {
+class SignUpFragment : Fragment() {
         private lateinit var emailS: String;
         private lateinit var passwordS: String;
         private lateinit var nameS: String

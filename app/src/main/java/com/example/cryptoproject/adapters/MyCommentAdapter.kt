@@ -1,11 +1,11 @@
-package com.example.cryptoproject.Adapters
+package com.example.cryptoproject.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptoproject.Model.CommentDataClass
+import com.example.cryptoproject.model.CommentDataClass
 import com.example.cryptoproject.R
 
 class MyCommentAdapter(private val userList : ArrayList<CommentDataClass>) :RecyclerView.Adapter<MyCommentAdapter.MyViewHolder2>() {

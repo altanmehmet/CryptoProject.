@@ -1,7 +1,5 @@
-package com.example.cryptoproject.Model
+package com.example.cryptoproject.model
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 data class MyDataItem(

@@ -1,7 +1,7 @@
-package com.example.cryptoproject.Helper
+package com.example.cryptoproject.helper
 
-import com.example.cryptoproject.Model.MyDataGraphItemItem
-import com.example.cryptoproject.Model.MyDataItem
+import com.example.cryptoproject.model.MyDataGraphItemItem
+import com.example.cryptoproject.model.MyDataItem
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
