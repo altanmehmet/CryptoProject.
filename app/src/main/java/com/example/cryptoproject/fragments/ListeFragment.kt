@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -103,6 +104,7 @@ class ListeFragment : Fragment() {
     ): View? {
         _binding = FragmentListeBinding.inflate(inflater, container, false)
         val view = binding.root
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
         setHasOptionsMenu(true)
         auth = FirebaseAuth.getInstance()
         tempArrayList = arrayListOf()

@@ -11,6 +11,7 @@ import com.example.cryptoproject.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import android.content.SharedPreferences
 import android.text.Editable
+import androidx.appcompat.app.AppCompatActivity
 import com.example.cryptoproject.R
 import java.util.*
 
@@ -33,6 +34,7 @@ class LoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
 
     }
 

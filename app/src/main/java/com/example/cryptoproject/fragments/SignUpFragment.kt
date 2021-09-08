@@ -2,6 +2,7 @@ package com.example.cryptoproject.fragments
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.cryptoproject.R
 import com.example.cryptoproject.databinding.FragmentSignUpBinding
