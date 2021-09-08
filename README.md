@@ -75,7 +75,6 @@ You can find information about Firebase configuration [here](https://firebase.go
 
 ---
 
-https://user-images.githubusercontent.com/44698382/132320204-bc8a2d77-5cf1-4c27-b0db-7abbb75e3c0c.mp4
 
 ---
 
