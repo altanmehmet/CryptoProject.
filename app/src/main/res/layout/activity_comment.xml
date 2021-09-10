@@ -9,10 +9,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
-        android:layout_width="409dp"
-        android:layout_height="533dp"
+        android:layout_width="413dp"
+        android:layout_height="425dp"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,7 +24,7 @@
         android:id="@+id/linearLayout3"
         android:layout_width="406dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
@@ -32,13 +32,11 @@
 
         <EditText
             android:id="@+id/commentText"
-            android:layout_width="355dp"
-            android:layout_height="84dp"
+            android:layout_width="322dp"
+            android:layout_height="71dp"
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:ems="10"
-            android:fontFamily="@font/allerta"
-            android:gravity="bottom"
             android:hint="@string/yorum1"
             android:inputType="textPersonName" />
 
@@ -56,14 +54,15 @@
         android:id="@+id/userNameText1"
         android:layout_width="244dp"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
-        android:fontFamily="@font/allerta"
         android:hint="username"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView1"
-        app:layout_constraintVertical_bias="0.47" />
+        app:layout_constraintVertical_bias="0.516" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

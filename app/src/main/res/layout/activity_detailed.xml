@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frame_lay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/background"
         tools:context=".activity.MainActivity">
 
@@ -178,6 +178,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/allerta"
+                    android:minHeight="48dp"
                     android:text="@string/cevir"
                     android:textColor="#F3EEEE" />
             </LinearLayout>
@@ -206,13 +207,13 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button"
+                    android:id="@+id/button5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="75dp"
+                    android:backgroundTint="@color/black"
                     android:background="@drawable/backgroundtext"
-                    android:fontFamily="@font/allerta"
                     android:gravity="center"
                     android:text="@string/yorum"
                     android:textColor="@color/white"

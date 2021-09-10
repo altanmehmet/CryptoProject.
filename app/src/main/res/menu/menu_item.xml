@@ -5,7 +5,7 @@
         android:id="@+id/menu_refresh"
         android:icon="@drawable/ic_baseline_refresh_24"
         android:title="Refresh"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
 
         android:id="@+id/search_action"

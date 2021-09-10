@@ -1,18 +1,20 @@
+
 package com.example.cryptoproject.activity
 
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptoproject.adapters.MyCommentAdapter
-import com.example.cryptoproject.model.CommentDataClass
 import com.example.cryptoproject.R
+import com.example.cryptoproject.adapters.MyCommentAdapter
 import com.example.cryptoproject.databinding.ActivityCommentBinding
+import com.example.cryptoproject.model.CommentDataClass
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.activity_comment.*
@@ -20,14 +22,16 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
+
 
 class CommentActivity : AppCompatActivity() {
     private lateinit var userRecyclerView: RecyclerView
     private lateinit var binding: ActivityCommentBinding
     private lateinit var userArrayList: ArrayList<CommentDataClass>
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db:FirebaseFirestore
     private lateinit var myAdapter: MyCommentAdapter
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -47,10 +51,10 @@ class CommentActivity : AppCompatActivity() {
             val comment = binding.commentText.text.toString()
             val username = binding.userNameText1.text.toString()
             var dateTime = LocalDateTime.now()
-            var newDate = dateTime.atOffset(ZoneOffset.UTC)
-            val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.getDefault())
-            val formatted = newDate.format(formatter)
-            saveFireStore(username,comment, formatted)
+            var newDate = dateTime.atOffset(ZoneOffset.UTC).toString()
+            //val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.getDefault())
+            //val formatted = newDate.format(formatter)
+            saveFireStore(comment,newDate, username)
         }
     }
 
@@ -67,19 +71,10 @@ class CommentActivity : AppCompatActivity() {
                         if (dc.type == DocumentChange.Type.ADDED) {
                             userArrayList.add(dc.document.toObject(CommentDataClass::class.java))
                         }
-                        myAdapter.notifyDataSetChanged()
                     }
-                   /*var counter = true
-                    for (i in userArrayList.indices) {
-                        if (userArrayList[i].comment == null) {
-                            counter = false
-                        }
-                    }
-                    if(counter == true)
-                        myAdapter.notifyDataSetChanged()*/
+                    myAdapter.notifyDataSetChanged()
                 }
-
-            })
+                })
     }
 
 

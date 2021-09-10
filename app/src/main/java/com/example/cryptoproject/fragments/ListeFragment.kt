@@ -27,7 +27,7 @@ import kotlin.collections.ArrayList
 
 class ListeFragment : Fragment() {
     val BASE_URL = "https://api.nomics.com/v1/"
-    lateinit var myAdapter: MyAdapter
+    private var myAdapter : MyAdapter? = null
     private lateinit var tempArrayList: ArrayList<MyDataItem>
     lateinit var linearLayoutManager: LinearLayoutManager
     private var _binding: FragmentListeBinding? = null
@@ -52,7 +52,7 @@ class ListeFragment : Fragment() {
                 tempArrayList.addAll(liste)
                 myAdapter = MyAdapter(activity!!.baseContext, tempArrayList)
                 binding.recyclerV.adapter = myAdapter
-                myAdapter.setOnItemClickListener(object : MyAdapter.OnItemClickListener {
+                myAdapter!!.setOnItemClickListener(object : MyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
                         val intent = Intent(requireActivity(), DetailedActivity::class.java)
                         val dataI = MyDataItem(
@@ -85,7 +85,7 @@ class ListeFragment : Fragment() {
                     }
 
                 })
-                binding.recyclerV.adapter!!.notifyDataSetChanged()
+                //binding.recyclerV.adapter!!.notifyDataSetChanged()
                 binding.progressBar.visibility = View.GONE
 
             }
@@ -104,13 +104,13 @@ class ListeFragment : Fragment() {
     ): View? {
         _binding = FragmentListeBinding.inflate(inflater, container, false)
         val view = binding.root
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        setHasOptionsMenu(true)
-        auth = FirebaseAuth.getInstance()
-        tempArrayList = arrayListOf()
         linearLayoutManager = LinearLayoutManager(requireContext())
         binding.recyclerV.layoutManager = linearLayoutManager
         getMyData()
+        //(requireActivity() as AppCompatActivity).supportActionBar?.show()
+        setHasOptionsMenu(true)
+        auth = FirebaseAuth.getInstance()
+        tempArrayList = arrayListOf()
 
         return view
     }

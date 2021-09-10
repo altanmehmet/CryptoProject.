@@ -33,7 +33,6 @@ class DetailedActivity : AppCompatActivity() {
     val BASE_URL = "https://api.nomics.com/v1/"
     private lateinit var binding: ActivityDetailedBinding
     private var equalCurrency = " "
-    private var convertCurrency = ""
     private lateinit var auth : FirebaseAuth
     lateinit var lineDataSet: LineDataSet
     lateinit var linelist: ArrayList<Entry>
@@ -41,7 +40,6 @@ class DetailedActivity : AppCompatActivity() {
     private var dollarText : Double = 0.0
     private var cryptoText : Double = 0.0
     private var result : Double = 0.0
-    var stringBuild : String = ""
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +49,7 @@ class DetailedActivity : AppCompatActivity() {
         val user = intent.extras!!.getSerializable("ist") as MyDataItem
         equalCurrency = user.currency.toString()
         cryptoText = user.price!!.toDouble()
-        binding.button.setOnClickListener {
+        binding.button5.setOnClickListener {
             val intent = Intent(this, CommentActivity::class.java)
             startActivity(intent)
         }
