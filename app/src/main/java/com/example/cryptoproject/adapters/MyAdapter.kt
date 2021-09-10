@@ -37,8 +37,8 @@ class MyAdapter(var context:Context, private val userList : List<MyDataItem>): R
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
-        ,mListener)
+            ),
+            mListener)
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.userId.text = userList[position].currency
